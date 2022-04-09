@@ -1,49 +1,68 @@
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.text.ParseException;
+import java.util.Arrays;
+
+import static java.util.Arrays.*;
 
 public class RunCalc {
     public static void main(String[] args) throws IOException {
         Calculator calculator = new Calculator();
+
+
         try {
-            calculator.setFirstNumber(Integer.parseInt(calculator.getInputSplit(0)));
-            calculator.setSecondNumber(Integer.parseInt(calculator.getInputSplit(2)));
-            switch (calculator.getInputSplit(1)){
-                case "+":
-                    System.out.println(calculator.getFirstNumber() + calculator.getSecondNumber());
+                int first = Integer.parseInt(calculator.firstValue);
+                int second = Integer.parseInt(calculator.secondValue);
+
+            switch (calculator.input[1]){
+                case "+" :
+                    System.out.println(first + second);
                     break;
-                case "-":
-                    System.out.println(calculator.getFirstNumber() - calculator.getSecondNumber());
+                case "-" :
+                    System.out.println(first - second);
                     break;
-                case "*":
-                    System.out.println(calculator.getFirstNumber() * calculator.getSecondNumber());
+                case "*" :
+                    System.out.println(first * second);
                     break;
-                case "/":
-                    System.out.println(calculator.getFirstNumber() / calculator.getSecondNumber());
+                case "/" :
+                    System.out.println(first / second);
                     break;
                 default:
                     System.out.println("Введена неверная математическая операция");
 
             }
-        }catch (NumberFormatException e){
-            switch (calculator.getInputSplit(1)){
-                case "+":
+        }catch (NumberFormatException e)
+        { try {
 
-                    System.out.println(calculator.getRomanNumbersValue(calculator.getRomanNumbers(0) + calculator.getRomanNumbers(2)));
+            int first = binarySearch(calculator.romanicNumbers, calculator.firstValue) + 1;
+            System.out.println(first);
+            int second = binarySearch(calculator.romanicNumbers, calculator.secondValue) + 1;
+            System.out.println(second);
+
+
+
+            switch (calculator.input[1]) {
+                case "+":
+                    System.out.println(calculator.romanicNumbers[first + second - 1] );
 
                     break;
                 case "-":
-                    System.out.println(calculator.getRomanNumbersValue(calculator.getRomanNumbers(0) - calculator.getRomanNumbers(2)));
+                    System.out.println(calculator.romanicNumbers[first - second - 1]);
                     break;
                 case "*":
-                    System.out.println(calculator.getRomanNumbersValue(calculator.getRomanNumbers(0) * calculator.getRomanNumbers(2)));
+                    System.out.println(calculator.romanicNumbers[(first * second) - 1]);
                     break;
                 case "/":
-                    System.out.println(calculator.getRomanNumbersValue(calculator.getRomanNumbers(0) /calculator.getRomanNumbers(2)));
+                    System.out.println(calculator.romanicNumbers[(first / second) - 1]);
                     break;
                 default:
                     System.out.println("Введена неверная математическая операция");
 
             }
+
+        } catch (NullPointerException ex) {
+            System.out.println("Используются одновременно разные системы счисления");
+        }
 
         }
 
