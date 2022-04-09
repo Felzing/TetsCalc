@@ -28,12 +28,13 @@ public class Calculator {
         input = reader.readLine().split(" ");
         if( input.length != 3) {
             System.out.println("Формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)");
+
+        }else {
+            firstValue = input[0];
+            secondValue = input[2];
         }
-//        if (!MathOperations.values().equals(input[1])){
-//            System.out.println("Строка не является математической операцией");
-//        }
-        firstValue = input[0];
-        secondValue = input[2];
+
+
 
         reader.close();
     }

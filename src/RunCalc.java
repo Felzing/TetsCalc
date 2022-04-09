@@ -1,14 +1,11 @@
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.text.ParseException;
 import java.util.Arrays;
 
-import static java.util.Arrays.*;
+
 
 public class RunCalc {
     public static void main(String[] args) throws IOException {
         Calculator calculator = new Calculator();
-
 
         try {
                 int first = Integer.parseInt(calculator.firstValue);
@@ -34,10 +31,9 @@ public class RunCalc {
         }catch (NumberFormatException e)
         { try {
 
-            int first = binarySearch(calculator.romanicNumbers, calculator.firstValue) + 1;
-            System.out.println(first);
-            int second = binarySearch(calculator.romanicNumbers, calculator.secondValue) + 1;
-            System.out.println(second);
+            int first = Arrays.asList(calculator.romanicNumbers).indexOf(calculator.firstValue) + 1;
+            int second = Arrays.asList(calculator.romanicNumbers).indexOf(calculator.secondValue) + 1;
+
 
 
 
@@ -60,7 +56,7 @@ public class RunCalc {
 
             }
 
-        } catch (NullPointerException ex) {
+        } catch (ArrayIndexOutOfBoundsException ex) {
             System.out.println("Используются одновременно разные системы счисления");
         }
 
