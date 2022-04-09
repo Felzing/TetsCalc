@@ -5,6 +5,7 @@ import java.util.Arrays;
 
 public class RunCalc {
     public static void main(String[] args) throws IOException {
+        System.out.println("Введите 2 числа (от 1 до 10 или от I до X) и знак мамтематической операции между ними через пробел. Оба числа должны быть из одной системы счисления - арабской или римской");
         Calculator calculator = new Calculator();
 
         try {
@@ -31,25 +32,30 @@ public class RunCalc {
         }catch (NumberFormatException e)
         { try {
 
-            int first = Arrays.asList(calculator.romanicNumbers).indexOf(calculator.firstValue) + 1;
-            int second = Arrays.asList(calculator.romanicNumbers).indexOf(calculator.secondValue) + 1;
-
+            int first = Arrays.asList(calculator.romanicInput).indexOf(calculator.firstValue) + 1;
+            int second = Arrays.asList(calculator.romanicInput).indexOf(calculator.secondValue) + 1;
+            int result;
 
 
 
             switch (calculator.input[1]) {
                 case "+":
-                    System.out.println(calculator.romanicNumbers[first + second - 1] );
+                    result = first + second;
+                    System.out.println(calculator.arabicToRonanConverter(result));
 
                     break;
                 case "-":
-                    System.out.println(calculator.romanicNumbers[first - second - 1]);
+                    result = first - second;
+                    if(result < 0) System.out.println("Римские цифры не имеют отрицательных значений");
+                    else System.out.println(calculator.arabicToRonanConverter(result));
                     break;
                 case "*":
-                    System.out.println(calculator.romanicNumbers[(first * second) - 1]);
+                    result = first * second;
+                    System.out.println(calculator.arabicToRonanConverter(result));
                     break;
                 case "/":
-                    System.out.println(calculator.romanicNumbers[(first / second) - 1]);
+                    result = first / second;
+                    System.out.println(calculator.arabicToRonanConverter(result));
                     break;
                 default:
                     System.out.println("Введена неверная математическая операция");
