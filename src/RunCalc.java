@@ -32,8 +32,8 @@ public class RunCalc {
         }catch (NumberFormatException e)
         { try {
 
-            int first = Arrays.asList(calculator.romanicInput).indexOf(calculator.firstValue) + 1;
-            int second = Arrays.asList(calculator.romanicInput).indexOf(calculator.secondValue) + 1;
+            int first = Arrays.asList(calculator.romanInput).indexOf(calculator.firstValue) + 1;
+            int second = Arrays.asList(calculator.romanInput).indexOf(calculator.secondValue) + 1;
             int result;
 
 

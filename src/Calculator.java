@@ -1,9 +1,8 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 
 public class Calculator {
     int [] arabicNumbers = new int[10];
@@ -12,19 +11,9 @@ public class Calculator {
             arabicNumbers[i] = i + 1;
         }
     }
-    String [] romanicInput = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"};
+    String [] romanInput = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"};
 
-    Map<Integer, String> romanicOutPut = new HashMap<>();
-    void initMap (){
-        romanicOutPut.put(1, "I");
-        romanicOutPut.put(5, "V");
-        romanicOutPut.put(10, "X");
-        romanicOutPut.put(50, "L");
-        romanicOutPut.put(100, "C");
-        romanicOutPut.put(500, "D");
-    }
-    int[] divs = {500, 100, 50, 10, 5, 1};
-    StringBuilder stringBuilder = new StringBuilder();
+
 
     String arabicToRonanConverter(int number){
         if ((number <= 0) || (number > 4000)) {
@@ -59,7 +48,6 @@ public class Calculator {
     String secondValue;
 
     public Calculator() throws IOException {
-        initMap ();
         initArabicNumbers();
         reader = new BufferedReader(new InputStreamReader(System.in));
         input = reader.readLine().split(" ");
